@@ -12,6 +12,8 @@ Football Sim is a deep football management game featuring:
 - **Rich broadcast experience** — play-by-play commentary with 400+ phrase fragments across 3 commentary styles (neutral, hype, analytical), momentum tracking, drive narratives, and atmosphere text
 - **Deep playbook system** — custom offensive/defensive plays, route-based play design, 13 down/distance buckets, formation depth charts, and coach archetype presets
 - **Complete season lifecycle** — regular season, playoffs (NFL-style bracket), offseason, draft, progression/regression, Hall of Fame, Ring of Honor
+- **Almanac** — 9-tab historical reference hub: awards, All-Pro selections, all-time records, Top 10 career leaders, season leaders, season recaps, past champions, franchise standings, and draft history
+- **Narrative & immersion** — record-chase alerts, rivalry heat system, career milestones, multi-week story arcs (undefeated watch, dynasty, breakout players, revenge games)
 - **Power Rankings** — weighted formula considering wins, point differential, strength of schedule, recent form, efficiency, quality wins, and roster health
 - **Live dashboard** — team overview, standings, playoff race, team leaders, weekly recap, injury report, upcoming games, recent schedule
 

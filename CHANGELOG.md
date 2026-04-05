@@ -4,6 +4,70 @@ All notable updates to Football Sim.
 
 ---
 
+## 2026-04-05
+
+### Almanac — Complete Historical Reference Hub (9 Tabs)
+New top-level "Almanac" nav item with comprehensive league history:
+
+- **Awards** — year-by-year major awards (MVP, OPOY, DPOY, OROY, DROY, Coach of Year, Comeback Player) with All-Pro teams
+- **All-Pro** — dedicated 1st/2nd team All-Pro viewer grouped by position, with year selector
+- **Records** — career and single-season records for all major stat categories (career/single-season toggle)
+- **Top 10 All-Time** — top 10 career leaders with stat group selector (Passing/Rushing/Receiving/Defense)
+- **Season Leaders** — per-year stat leaders (top 5 per category) with year selector
+- **Season Recaps** — composite year-by-year view: champion hero with team logos, runner-up, awards, stat leaders, full 32-team final standings
+- **Past Champions** — championship history with dynasty tracker (title counts per team), year-by-year table
+- **All-Time Standings** — franchise records with 6 sortable columns (Win%, W, Titles, PF, Diff, Playoffs)
+- **Past Drafts** — round-by-round draft history by year, player names clickable, college listed
+
+Backend: `draftHistory` field added to LeagueHistory (persisted at draft completion). Aggregation module `src/engine/almanac.ts` with pure functions for career/season leaders and franchise standings.
+
+Frontend: Client-side aggregation in `web/src/utils/almanac.ts` for stat queries. 8 new view components.
+
+### Narrative & Immersion Systems
+Post-processing narrative layer that reads game results, stats, and history to generate richer storylines:
+
+**Record Tracking:**
+- Pace-based alerts after week 8 ("on pace to break the record")
+- Near-record alerts after week 14 ("needs just X more to break the record")
+- Record-broken events when all-time records fall
+- Career record chase detection for veterans (3+ seasons)
+- State-transition gating prevents spam (each alert fires once per player per stat per season)
+
+**Extended Milestones:**
+- Single-game milestones: 300/400/500 passing yards, 100/150/200 rushing/receiving yards, 4/5/6 TD passes, etc.
+- Career tier milestones: 10K/20K/30K/40K/50K passing yards, 100/200/300 passing TDs, etc.
+- Dedup against existing big-performance news to avoid double-reporting
+
+**Rivalry System:**
+- Division rivals always have a base rivalry
+- Persistent rivalry heat accumulates from close games (+15), normal games (+5), upsets (+10 bonus), division games (+5 bonus), playoff meetings (+20)
+- Pre-game rivalry previews for heated upcoming matchups
+- Post-game "rivalry intensifies" for close rivalry games
+- Heat decays 30% per offseason, entries pruned when below threshold
+
+**Narrative Arcs:**
+- Undefeated Watch: starts at 5-0, escalates at 8/10/12/14 wins, resolves on loss or perfect season
+- Dynasty Run: detected from consecutive championships, tracks quest for 3-peat/4-peat
+- Breakout Player: detected when production exceeds prior season by 50%+
+- Revenge Game: previews for upcoming playoff rematches
+
+**Frontend:** "Storylines" filter tab in news feed for all narrative news types.
+
+All narrative systems are read-only — they never influence game simulation outcomes.
+
+### Data Model Changes
+- Added `draftHistory: DraftHistoryEntry[]` to LeagueHistory
+- Added `rivalries: Record<string, RivalryHeat>` to League
+- Added `narrativeArcs: NarrativeArc[]` to League
+- Added `recordChaseState: Record<string, Record<string, boolean>>` to League
+- Fixed `TeamSeasonHistory.championshipRound` on frontend to include all playoff rounds (wildcard, divisional, conference, championship, champion)
+- Fixed `PlayerSeasonHistoryLine` on frontend to include missing fields (completions, attempts, carries, targets, sacksAllowed)
+
+### Bug Fixes
+- Fixed stale `'semifinal'` comparison in PlayoffView.tsx (should be `'conference'`/`'divisional'`/`'wildcard'`)
+
+---
+
 ## 2026-04-03
 
 ### 2D Top-Down Game Visualization
