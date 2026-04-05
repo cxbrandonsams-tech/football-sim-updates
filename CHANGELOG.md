@@ -6,6 +6,26 @@ All notable updates to Football Sim.
 
 ## 2026-04-05
 
+### 10-Season Stress Test — Zero Bugs
+Full end-to-end stress test simulating 10 complete seasons (regular season, playoffs, offseason, draft, season rollover). Results:
+- 14/14 tests pass, 0 bugs, 0 warnings
+- 10 champions crowned, 1,853 player histories, 90 Hall of Fame inductees
+- 387 rivalry entries with 93 playoff meetings
+- All narrative systems functional (record chases, milestones, arcs)
+- Per-game ready-up + instant sim verified for CPU opponents
+
+### Bug Fixes
+- Regular season now auto-transitions to postseason after week 18 (no extra advance needed)
+- Play-by-play log now visible during game replay (was only during live games)
+- Camera zoom reduced ~35% for better field visibility
+- Safety/MLB positioning fixed — no longer rush into backfield on zone drops
+- CPU teams auto-ready when human team readies up (no manual ready-up needed for CPU opponents)
+- Jersey number font size increased for readability
+- Breakout arc detection tightened (was too aggressive, now requires 75% improvement + 500yd minimum volume)
+
+### Multiplayer Game Day with Live Spectating
+Per-game lifecycle: scheduled → ready → live → final
+
 ### Almanac — Complete Historical Reference Hub (9 Tabs)
 New top-level "Almanac" nav item with comprehensive league history:
 
