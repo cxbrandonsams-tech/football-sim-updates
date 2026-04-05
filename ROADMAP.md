@@ -55,16 +55,7 @@ A comprehensive historical reference hub with sub-pages:
 
 ### Advanced AI
 - Smarter CPU team management (trades, free agency, draft)
-- Dynamic difficulty adjustment
 - Coaching personality impact on game simulation
 
 ### Expanded Game Modes
 - Fantasy draft leagues
-- Historical scenarios
-- Challenge modes
-
----
-
-## Vision
-
-Football Sim aims to be the deepest browser-based football management game available — combining the strategic depth of classic sports sims with a modern, beautiful UI and an immersive broadcast-quality game experience. Every feature should feel like it belongs in a premium sports management product, not a hobby project.
