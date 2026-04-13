@@ -4,6 +4,142 @@ All notable updates to Football Sim.
 
 ---
 
+## 2026-04-13
+
+### Team + GM Navigation Merge
+Merged the Team and GM top-level sections into a single unified "Team" section. The top nav now has 7 items instead of 8.
+
+- **Roster dual-lens toggle** — switch between Performance view (Status, OVR, Age, Dev Trait) and Contracts view (Salary, Bonus, Years, Demands, Extend/Cut actions) without leaving the page
+- **Cap summary strip** — payroll bar, cap space, expiring count, and demand count render inline above the contracts table
+- **Contract filter chips** — All / Demands / Expiring quick filters with position-group collapsible rows
+- **Trades and Free Agents** are now Team sub-tabs with a visual separator dividing on-field tabs (Overview, Depth Charts, Gameplans, Playbooks) from front-office tabs (Trades, Free Agents)
+- **Free Agent starter comparison** — when browsing free agents, a subtle chip shows your current starter at that position if the FA is better (e.g., "Your WR1: Mike Evans (79 OVR)")
+- Deleted `TeamOverviewView` and `ContractsView` (absorbed into existing views)
+
+### Hall of Fame & Ring of Honor Recalibration
+- HOF induction threshold raised from 150 to 175
+- 3-season waiting period after retirement before HOF eligibility
+- Max 7 inductees per year to prevent class inflation
+- ROH induction threshold raised from 55 to 85, jersey retirement from 100 to 130
+- 4-season minimum team tenure required for ROH
+- Reduced seasonal rank points to slow ROH accumulation
+- Legacy score computation now uses config constants instead of hardcoded values
+
+---
+
+## 2026-04-12
+
+### Primetime Design System
+Complete visual identity overhaul replacing the previous teal/orange FM-inspired palette:
+
+- **Monochrome base** with silver primary and pure neutral surfaces
+- **6 accent tokens**: neon (#2bff5e), cyan (#00d4ff), steel (#5b8fcc), gold (#d4a017), earth (#8B6914), football (#8B4513)
+- **Offense = gold, Defense = cyan** accent convention across all Team views
+- **Typography**: Outfit for headlines, DM Sans for body/labels, JetBrains Mono for stats
+- **Glass panels**: `bg-black/60 backdrop-blur-md` with card depth system (top-border highlights, gradient hover reveals, layered shadows)
+- **Page entrance choreography**: staggered CSS animations (`pt-enter`) for all views
+- Auth screens retain original Primetime gold/fire/cyan orbs
+
+### Prose Engine — Professional Sports Writing
+Replaced template-based news generation with a data-driven prose engine:
+
+- Categorized vocabulary banks (verbs, adjectives, metaphors) across 11 category files
+- Article templates for all 23 news types with opener/closer/transition banks
+- Context tagging system for situation-aware word selection
+- Variety tracker prevents repetitive phrasing across articles
+- Professional sports writing quality with natural-sounding game recaps, trade reports, and milestone announcements
+
+### The Brandon Sams Show (Premium Radio Feature)
+AI-generated sports radio show with full audio production:
+
+- **Script assembler** builds `RadioScript` from league state with 15 segment types scored by relevance
+- **5 speaker roles** with distinct OpenAI TTS voices: host, analyst, and 3 caller personas (Mad Mike, Big Shirley, Stats Steve)
+- **6 in-season triggers** (week 1, mid-season, late-season, wildcard, championship) + 3 offseason triggers (FA recap, draft preview, draft recap)
+- **Audio pipeline**: OpenAI TTS generation → ffmpeg stitching → Cloudflare R2 storage
+- **RadioSidebar UI**: custom audio player with auto-scrolling transcript, past episode list, generating/pending/failed states
+- Replaces the standard League Feed sidebar when premium is enabled
+
+### Almanac Expansion (13 Tabs)
+- Added **Ring of Honor** and **GM Career** tabs (moved from League/GM sections)
+- Added **History** and **Hall of Fame** (moved from League section)
+- All Almanac pages converted to full-bleed glass + backdrop layout with transparent section wrappers
+- Total: Awards, All-Pro, Hall of Fame, Ring of Honor, Records, Top 10 All-Time, Season Leaders, Season Recaps, History, Past Champions, All-Time Standings, Past Drafts, GM Career
+
+### League Section Restructure
+- **New Rankings page** — 3-panel layout: featured team card + tiered table (Elite/Contender/Fringe/Rebuilding) with ELO ratings
+- **ELO rating system** — margin-of-victory adjusted, home advantage, persists across seasons
+- **Team Stats** — Offensive, Defensive, and Efficiency sub-tabs with sortable ranking tables
+- **8 new defensive/efficiency stats**: totalPlays, thirdDownConv, thirdDownAtt, redZoneTDs, redZoneTrips, sacks, interceptions, fumblesRecovered
+- **News redesign** — "The Gridiron Chronicle" newspaper layout with All/My Team tabs and 3-column article grid
+- Narrative tab removed; active storylines and rivalry watch merged into News as pinned sections
+- History and Hall of Fame moved to Almanac
+- "Leaders" sub-tab renamed to "Stats"
+
+### Standings Redesign
+- OOTP-style 4-column layout: IC/SC conference leaders flanking division tables
+- Full-bleed layout with stadium backdrop
+- Color-coded front-office personality badges
+- Team mentalities simplified to 3 labels: Win-Now / Balanced / Rebuilding
+
+---
+
+## 2026-04-11
+
+### SVG Player Portraits
+- Procedurally generated player faces using an 11-layer SVG composite system
+- Seeded RNG (FNV-1a + Mulberry32) ensures deterministic appearance from player name
+- 10 numeric appearance indices controlling face shape, skin tone, hair, eyes, nose, mouth, facial hair, accessories
+- Portraits appear across Dashboard, Team, Scouting, Almanac, Hall of Fame, and player profiles
+- `PlayerAvatar` wrapper component with `InitialsAvatar` fallback for missing portraits
+
+### Confidence-Based Scouting System (4 Stages)
+Complete overhaul replacing the old point-based L1/L2/L3 scouting:
+
+1. **School Scouting** (Offseason → Week 1): binary Powerhouse/Dark Horse choice, drips weeks 1–10
+2. **Position Scouting** (Weeks 1–10 → Week 11): 10-position % allocation, drips weeks 11–18
+3. **Targeted Scouting** (Weeks 11–18 → Wild Card): pick 5 schools, drips WC → Championship
+4. **Interviews** (Playoffs → Offseason): pick 10 prospects, immediate delivery, only way to reveal devTrait + characterFlags
+
+- Confidence 0–100% drives OVR range width (54 → 2), strengths/weaknesses count, potential tier accuracy
+- Diminishing returns formula: `effectiveGain = rawGain * (1 - current * 0.3)`
+- Pre-rolled 18-week college season with 50 schools, 5 conferences, stat leaderboards
+- Full Stitch UI: ScoutingShell with College, Prospects, Scouting HQ, and Draft Board views
+
+---
+
+## 2026-04-08
+
+### Coach System Archived
+Entire coaching subsystem removed from backend and frontend:
+- All coach types, models, engine consumers, 3 server endpoints, Coach of Year award, coach_change news type, COACH_ARCHETYPES, and the Coaches subtab deleted
+- Simulation rebalanced with `+0.007` in schemeBonus and adjusted progression age bands
+- One-time DB wipe migration for clean slate
+
+### Stitch Design System — Team Section
+- Team subtabs (Overview, Depth Charts, Gameplans, Playbooks) reskinned to Stitch
+- Shared `<TeamBackdrop>` stadium image across all Team subtabs
+- Stitch component kit: StitchCard, StitchSection, StitchTabBar, StitchTable, StitchChipRail, StitchStatCell, StitchBadge, StitchHeroStat
+
+### Depth Chart Redesign
+Two-tab layout:
+- **Overview**: 10-column responsive grid with all position groups, drag-to-reorder, Sort All by OVR
+- **Formations**: unit toggle + formation selector, SVG field visualization, per-slot PositionCards with drag reorder
+
+### Playbook Editor
+- 3-column layout: Playbook List / Call Sheet / Play Inspector
+- Offense/Defense side toggle with accent theming (gold/cyan)
+- Clone-first playbook creation (required source), delete custom playbooks
+- Debounce save with status indicators
+
+### Waiver Wire & Trade Block
+- **Waivers**: in-season cuts → 1-week waivers, reverse-standings priority before week 10 then rolling, AI claims + resolution
+- **Trade Block**: lightweight player shopping with interest scoring, no autonomous AI offers
+
+### Team Logo Optimization
+- All 32 team logos re-exported as 256x256 square PNGs with transparent backgrounds
+
+---
+
 ## 2026-04-05
 
 ### 10-Season Stress Test — Zero Bugs
@@ -15,165 +151,58 @@ Full end-to-end stress test simulating 10 complete seasons (regular season, play
 - Per-game ready-up + instant sim verified for CPU opponents
 
 ### Bug Fixes
-- Regular season now auto-transitions to postseason after week 18 (no extra advance needed)
-- Play-by-play log now visible during game replay (was only during live games)
+- Regular season now auto-transitions to postseason after week 18
+- Play-by-play log now visible during game replay
 - Camera zoom reduced ~35% for better field visibility
-- Safety/MLB positioning fixed — no longer rush into backfield on zone drops
-- CPU teams auto-ready when human team readies up (no manual ready-up needed for CPU opponents)
+- Safety/MLB positioning fixed for zone drops
+- CPU teams auto-ready when human team readies up
 - Jersey number font size increased for readability
-- Breakout arc detection tightened (was too aggressive, now requires 75% improvement + 500yd minimum volume)
+- Breakout arc detection tightened (75% improvement + 500yd minimum)
 
 ### Multiplayer Game Day with Live Spectating
 Per-game lifecycle: scheduled → ready → live → final
 
 ### Almanac — Complete Historical Reference Hub (9 Tabs)
-New top-level "Almanac" nav item with comprehensive league history:
-
-- **Awards** — year-by-year major awards (MVP, OPOY, DPOY, OROY, DROY, Coach of Year, Comeback Player) with All-Pro teams
-- **All-Pro** — dedicated 1st/2nd team All-Pro viewer grouped by position, with year selector
-- **Records** — career and single-season records for all major stat categories (career/single-season toggle)
-- **Top 10 All-Time** — top 10 career leaders with stat group selector (Passing/Rushing/Receiving/Defense)
-- **Season Leaders** — per-year stat leaders (top 5 per category) with year selector
-- **Season Recaps** — composite year-by-year view: champion hero with team logos, runner-up, awards, stat leaders, full 32-team final standings
-- **Past Champions** — championship history with dynasty tracker (title counts per team), year-by-year table
-- **All-Time Standings** — franchise records with 6 sortable columns (Win%, W, Titles, PF, Diff, Playoffs)
-- **Past Drafts** — round-by-round draft history by year, player names clickable, college listed
-
-Backend: `draftHistory` field added to LeagueHistory (persisted at draft completion). Aggregation module `src/engine/almanac.ts` with pure functions for career/season leaders and franchise standings.
-
-Frontend: Client-side aggregation in `web/src/utils/almanac.ts` for stat queries. 8 new view components.
+Awards, All-Pro, Records, Top 10 All-Time, Season Leaders, Season Recaps, Past Champions, All-Time Standings, Past Drafts.
 
 ### Narrative & Immersion Systems
-Post-processing narrative layer that reads game results, stats, and history to generate richer storylines:
-
-**Record Tracking:**
-- Pace-based alerts after week 8 ("on pace to break the record")
-- Near-record alerts after week 14 ("needs just X more to break the record")
-- Record-broken events when all-time records fall
-- Career record chase detection for veterans (3+ seasons)
-- State-transition gating prevents spam (each alert fires once per player per stat per season)
-
-**Extended Milestones:**
-- Single-game milestones: 300/400/500 passing yards, 100/150/200 rushing/receiving yards, 4/5/6 TD passes, etc.
-- Career tier milestones: 10K/20K/30K/40K/50K passing yards, 100/200/300 passing TDs, etc.
-- Dedup against existing big-performance news to avoid double-reporting
-
-**Rivalry System:**
-- Division rivals always have a base rivalry
-- Persistent rivalry heat accumulates from close games (+15), normal games (+5), upsets (+10 bonus), division games (+5 bonus), playoff meetings (+20)
-- Pre-game rivalry previews for heated upcoming matchups
-- Post-game "rivalry intensifies" for close rivalry games
-- Heat decays 30% per offseason, entries pruned when below threshold
-
-**Narrative Arcs:**
-- Undefeated Watch: starts at 5-0, escalates at 8/10/12/14 wins, resolves on loss or perfect season
-- Dynasty Run: detected from consecutive championships, tracks quest for 3-peat/4-peat
-- Breakout Player: detected when production exceeds prior season by 50%+
-- Revenge Game: previews for upcoming playoff rematches
-
-**Frontend:** "Storylines" filter tab in news feed for all narrative news types.
-
-All narrative systems are read-only — they never influence game simulation outcomes.
-
-### Data Model Changes
-- Added `draftHistory: DraftHistoryEntry[]` to LeagueHistory
-- Added `rivalries: Record<string, RivalryHeat>` to League
-- Added `narrativeArcs: NarrativeArc[]` to League
-- Added `recordChaseState: Record<string, Record<string, boolean>>` to League
-- Fixed `TeamSeasonHistory.championshipRound` on frontend to include all playoff rounds (wildcard, divisional, conference, championship, champion)
-- Fixed `PlayerSeasonHistoryLine` on frontend to include missing fields (completions, attempts, carries, targets, sacksAllowed)
-
-### Bug Fixes
-- Fixed stale `'semifinal'` comparison in PlayoffView.tsx (should be `'conference'`/`'divisional'`/`'wildcard'`)
+Record-chase detection, extended milestones, rivalry system, narrative arcs (undefeated watch, dynasty, breakout, revenge). Surfaces through the news feed.
 
 ---
 
 ## 2026-04-03
 
 ### 2D Top-Down Game Visualization
-- Replaced the broadcast-style field view with a full-field animated 2D top-down visualization
-- All 22 players rendered as labeled circles (QB, WR, CB, FS, etc.) with team colors
+- All 22 players rendered as labeled circles with team colors
 - Receivers run realistic route shapes (go, post, corner, slant, curl, out, flat, seam)
-- Defensive players track coverage patterns based on scheme (Cover 1/2/3/4, man, zone blitz)
+- Defensive players track coverage patterns based on scheme
 - Ball tracks from QB to receiver on passes, follows RB on runs
-- Visual effects: receiver glow based on coverage window, QB pressure indicator, TD/INT/sack flashes, breakaway speed trails, penalty flags
+- Visual effects: coverage window glow, QB pressure, TD/INT/sack flashes, breakaway trails
 - Commentary syncs sentence-by-sentence to animation phases
 - Speed control: 1x / 2x / 4x playback
-
-### Verification & Cleanup Pass
-- Found and fixed 24 orphaned CSS class references across 4 files
-- All legacy CSS fully eliminated — zero non-Tailwind styling remaining
 
 ---
 
 ## 2026-04-02
 
-### Complete Frontend Redesign (Figma Match)
+### Complete Frontend Redesign
 - Full visual rewrite of all 34 frontend files to match Figma design system
-- Deleted 7,277 lines of legacy CSS — zero legacy CSS remains
-- Added framer-motion page transitions, lucide-react icons, self-hosted Inter + JetBrains Mono fonts
-- New 3-column shell: league feed sidebar, main content, info rail with power rankings
-
-### Dashboard Overhaul
-- Team Overview with color-coded offense/defense rankings (green top 10, amber mid, red bottom 12)
-- Team Leaders: 5 stat categories (Passing, Rushing, Receiving, Sacks, INTs)
-- Weekly Recap: AI-generated headlines, standout performers, notable games with color-coded tags
-- Playoff Race: top 10 with seed-colored numbers, division records, week-over-week comparison
-- Recent Schedule: horizontal scroll with VS/@ indicators, opponent records, W/L scores
-- Trade Block placeholder (coming soon)
-
-### Power Rankings System
-- Weighted formula: 30% Win Score, 20% Point Differential, 15% Strength of Schedule, 15% Recent Form, 10% Efficiency, 5% Quality Wins, 5% Injury Adjustment
-- Top 5 displayed in right panel with movement arrows (up/down/unchanged)
-- Automatically shows user's team if outside top 5
-
-### Live Search
-- Search bar in top nav searches all players (by name) and teams (by name or abbreviation)
-- Results show player OVR, position, team, age
-- Click to navigate to player detail or team roster
+- 3-column shell: league feed sidebar, main content, info rail with power rankings
+- New dashboard with team overview, playoff race, team leaders, weekly recap, recent schedule
+- Power Rankings with weighted formula (wins, point diff, SOS, recent form, efficiency, quality wins, injury adjustment)
+- Live search across all players and teams
 
 ---
 
-## 2026-03-30
+## 2026-03-30 and Earlier
 
-### Frontend Architecture Rebuild
-- Migrated from monolithic CSS to Tailwind CSS v4
-- Implemented Figma-based design system with dark navy theme
-- 7-category navigation with contextual sub-navs
-- Dashboard grid matching Figma layout specifications
-
----
-
-## 2026-03-29
-
-### Play-by-Play Broadcast Experience
-- 10-feature broadcast enhancement: drive summary strip, momentum bar, key play flash, red zone overlay, penalty display, OT drama, around-the-league alerts, score ticker, rivalry stats, highlights reel
-- Two-layer commentary system with 400+ phrase fragments across 3 styles
-- Progressive sentence-by-sentence commentary reveal with keyword highlighting
-
-### Engine Tuning Pass
-- Simulation stat calibration against real NFL ranges
-- Red zone TD rate tuned to ~68-69% (NFL average)
-
----
-
-## Earlier Development (2026-03)
-
-### Core Systems Built
-- Position-specific player ratings (10 position types with unique rating sets)
+### Core Systems
+- Position-specific player ratings (16 positions with unique rating sets)
 - 5-phase pass engine (Protection, Separation, Decision, Throw, Catch)
 - 5-phase run engine (Blocking, Vision, Engagement, Contact, Breakaway)
-- Penalty system with accept/decline AI logic
-- Clock model with 15-min quarters, two-minute drill, timeouts
-- Overtime (NFL modified sudden death rules)
-- Special teams scoring (kick/punt return TDs, blocked kicks, safeties)
-- Playbook system with custom plays, formations, down/distance buckets
-- Tendencies / gameplan system with 7 sliders and 8 coach archetypes
-- Draft with scouting system (points budget, tiered reports)
-- Free agency with contract offers and player demands
-- Trading system with AI evaluation
-- Hall of Fame with era-relative legacy scoring
-- Ring of Honor with team-specific loyalty bonuses
-- GM career tracking
+- Penalty system, clock model, overtime, special teams scoring
+- Playbook system with custom plays, formations, tendencies/archetypes
+- Draft, scouting, free agency, contracts, trading
+- Hall of Fame, Ring of Honor, GM career tracking
 - Multi-user auth with JWT, league creation/joining
 - SQLite persistence, Vercel + Fly.io deployment
