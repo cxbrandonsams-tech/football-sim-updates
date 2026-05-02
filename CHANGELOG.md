@@ -1,34 +1,36 @@
-# Changelog
+# Football Sim Changelog
 
-All notable updates to Football Sim.
-
----
+> **Last updated:** 2026-05-02
+> **Scope:** Recent shipped product milestones reflected in the current codebase and the new public wiki set.
 
 ## 2026-05-02
 
-### Documentation Sync
+- Synced the canonical public-facing docs into this public mirror.
+- Mapped the legacy archive into `wiki/` so older pages remain available for reference.
+- Rewrote the canonical public overview, architecture, API, configuration, deployment, and gameplay summaries to match the current codebase.
 
-- Refreshed the public wiki to match the live project surface, including simulation, scouting, season lifecycle, player ratings, playbooks, gameplans, contracts, coaching, waivers, narrative systems, Almanac, Hall of Fame, and multiplayer game day.
-- Updated the top-level README, feature summary, and home page so player-facing guides are easy to find.
-- Replaced stale Almanac and simulation summaries with current mechanics language, including the 6-phase pass engine and the week-by-week offseason loop.
+## Late April 2026
 
-## 2026-04-13
+- Shipped commissioner readiness tooling, async weekly advancement, persistent notifications, replay preservation, and replay playback routes.
+- Added scheduled live kickoffs, owner nudges, force-ready, force-sim, kickoff clearing, and commissioner logging flows.
+- Added seeded balance gating to deploy verification.
+- Added CPU roster-floor repair so unattended teams do not soft-lock long-running leagues.
 
-### Team + GM Navigation Merge
-Merged the Team and GM top-level sections into a single unified "Team" section. The top nav now has 7 items instead of 8.
+## Mid April 2026
 
-- **Roster dual-lens toggle** — switch between Performance view (Status, OVR, Age, Dev Trait) and Contracts view (Salary, Bonus, Years, Demands, Extend/Cut actions) without leaving the page
-- **Cap summary strip** — payroll bar, cap space, expiring count, and demand count render inline above the contracts table
-- **Contract filter chips** — All / Demands / Expiring quick filters with position-group collapsible rows
-- **Trades and Free Agents** are now Team sub-tabs with a visual separator dividing on-field tabs (Overview, Depth Charts, Gameplans, Playbooks) from front-office tabs (Trades, Free Agents)
-- **Free Agent starter comparison** — when browsing free agents, a subtle chip shows your current starter at that position if the FA is better (e.g., "Your WR1: Mike Evans (79 OVR)")
-- Deleted `TeamOverviewView` and `ContractsView` (absorbed into existing views)
+- Expanded contracts into salary + years + bonus negotiation with interest previews, dead cap, and fifth-year option support.
+- Shipped the coaching market, coordinator promotion/poaching flows, and d20 Training Camp progression.
+- Completed the major Primetime/Stitch frontend rollout across the app shell and key league surfaces.
+- Added Almanac replay history, season recaps, head-to-head views, and the recalibrated legacy thresholds now used by Hall of Fame and Ring of Honor.
 
-### Hall of Fame & Ring of Honor Recalibration
-- HOF induction threshold raised from 150 to 175
-- 3-season waiting period after retirement before HOF eligibility
-- Max 7 inductees per year to prevent class inflation
-- ROH induction threshold raised from 55 to 85, jersey retirement from 100 to 130
-- 4-season minimum team tenure required for ROH
-- Reduced seasonal rank points to slow ROH accumulation
-- Legacy score computation now uses config constants instead of hardcoded values
+## Early April 2026
+
+- Shipped the four-stage scouting confidence pipeline and modern scouting shell.
+- Added custom playbooks, formation-slot management, scheme systems, and weekly gameplan layers.
+- Expanded command-center style dashboards, scouting support views, and draft workflow surfaces.
+
+## Ongoing Product Themes
+
+- Deep franchise management with strong commissioner support
+- Historically aware league progression
+- A simulation-first rules engine with a current, broadcast-inspired frontend

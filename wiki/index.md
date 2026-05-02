@@ -1,35 +1,32 @@
-# Wiki Index
+---
+title: Legacy Wiki Index
+type: index
+updated: 2026-05-02
+---
 
-Start here if you want the current public guide set.
+# Football Sim Legacy Wiki
 
-## Core Guides
+This directory preserves the former repo-root `wiki/` content as a historical archive.
 
-- [[Home]] - overview and entry point
-- [[Simulation Engine]] - how plays are resolved
-- [[Player Ratings]] - what the ratings mean
-- [[Playbooks]] - offensive and defensive play libraries
-- [[Gameplans]] - tempo, pressure, coverage, and other strategic sliders
-- [[Playbook Fit]] - how scheme fit changes play selection and results
-- [[Scouting & Draft]] - player scouting, prospect confidence, and draft flow
-- [[Season Lifecycle]] - the full season and offseason loop
+## Before You Read These Pages
 
-## Franchise Management
+- The canonical public docs now live one level up in [`../index.md`](../index.md).
+- Several pages in this archive use superseded thresholds, filenames, and UI terminology.
+- Treat this folder as design history and project archaeology, not the current public source of truth.
 
-- [[Contracts]] - extensions, fifth-year options, and dead cap
-- [[Coaching]] - coach roles, markets, promotions, and retirements
-- [[Waivers And Trade Block]] - waivers, claims, and the trade block
+## Current Canonical Replacements
 
-## History And Story
+- [`../project-overview.md`](../project-overview.md) — current product summary
+- [`../game-design.md`](../game-design.md) — current gameplay systems
+- [`../playbooks-and-formations.md`](../playbooks-and-formations.md) — current playbook and formation rules
+- [`../system-architecture.md`](../system-architecture.md) — current technical architecture
+- [`../api-reference.md`](../api-reference.md) — current public API surface
 
-- [[Narrative Systems]] - records, milestones, rivalries, and arcs
-- [[Almanac]] - the league history stack
-- [[Hall of Fame]] - legacy scoring and honors
+## Archived Contents
 
-## Multiplayer
-
-- [[Multiplayer Game Day]] - readiness, scheduling, and live games
-
-## Reference
-
-- [[Design]] - current visual system notes
-- [CHANGELOG.md](../CHANGELOG.md) - documentation and release notes
+- [overview.md](overview.md)
+- [entities/](entities/)
+- [concepts/](concepts/)
+- [sources/](sources/)
+- [synthesis/](synthesis/)
+- [log.md](log.md)

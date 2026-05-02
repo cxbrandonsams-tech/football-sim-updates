@@ -7,7 +7,7 @@ sources: [CLAUDE.md, project memory, shelved items list]
 tags: [roadmap, priorities]
 ---
 
-> **Updated 2026-04-25.** See [project-overview.md](project-overview.md) for the canonical current project state.
+> **Updated 2026-04-25.** See `CLAUDE.md` for the canonical current project state.
 
 # Near-Term Roadmap
 
@@ -74,6 +74,6 @@ These items are explicitly deferred and should not be implemented unless specifi
 
 ## See Also
 
-- [wiki/synthesis/system-status-matrix.md](wiki/synthesis/system-status-matrix.md)
-- [wiki/synthesis/development-timeline.md](wiki/synthesis/development-timeline.md)
-- [wiki/concepts/vertical-slices.md](wiki/concepts/vertical-slices.md)
+- [[system-status-matrix]]
+- [[development-timeline]]
+- [[vertical-slices]]
