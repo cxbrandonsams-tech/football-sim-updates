@@ -1,108 +1,109 @@
 # Features
 
-A complete breakdown of everything in Football Sim.
+A complete breakdown of everything Football Sim currently exposes to players.
 
 ---
 
 ## Franchise Management
 
 | Feature | Details |
-|---------|---------|
-| **Roster Management** | 53-man rosters across 16 position types. Cut, sign, and extend players. Dual-lens roster view shows performance data or contract details with one toggle. |
-| **Salary Cap** | $420M cap with payroll tracking, cap space visualization, expiring contract alerts, and contract demand badges. Inline Extend/Cut actions right from the roster. |
-| **Trading** | Propose trades with players and draft picks. AI evaluates trade value using OVR, age curves, contract control, and salary efficiency. Pending trade notifications with accept/reject. |
-| **Free Agency** | Browse available players with position filters. Starter comparison chips show when a free agent beats your current player. Offer salary and years. |
-| **Waiver Wire** | Recently released players hit waivers for 1 week. Priority is reverse-standings before week 10, then rolling. AI teams make claims too. |
-| **Trade Block** | List players as available. AI teams express interest based on roster needs. Interest scoring drives visibility, but no autonomous AI offers. |
-| **Depth Chart** | Drag-to-reorder across all position groups. Formation visualization shows starter assignments on an SVG field diagram. |
+|---|---|
+| **Roster Management** | 53-man rosters across 16 position types. Cut, sign, and extend players. Dual-lens roster view shows performance data or contract details. |
+| **Salary Cap** | $420M cap with payroll tracking, cap space visualization, dead cap, expiring contract alerts, and demand badges. |
+| **Contracts** | Extensions, fifth-year options, and dead cap obligations all live in the contract loop. |
+| **Trading** | Propose trades with players and draft picks. AI evaluates value using OVR, age curves, contract control, and salary efficiency. |
+| **Free Agency** | Browse available players with position filters. Starter comparison chips show when a free agent beats your current starter. |
+| **Waiver Wire** | Recently released players hit waivers for 1 week. Priority is reverse standings before the trade deadline, then rolling. |
+| **Trade Block** | Mark players as available and see which teams are most interested. |
+| **Coaching** | Hire, fire, promote, and lose coaches through the offseason market and poaching flow. |
+| **Depth Chart** | Drag to reorder across position groups. Formation views show the roster on the field. |
 
-## Playbook System
+## Strategy
 
 | Feature | Details |
-|---------|---------|
-| **Custom Playbooks** | Create offensive and defensive playbooks by cloning from built-in templates. Add/remove plays, adjust weights per down/distance. |
-| **13 Down/Distance Buckets** | Fine-grained play-calling control: 1st & 10, 2nd & Long, 3rd & Short, 4th & Goal, etc. |
-| **Tendencies & Archetypes** | 7 philosophy sliders (run/pass balance, aggression, tempo, etc.) shape your team's identity. 8 archetype presets to start from. |
-| **Formation Depth Charts** | Assign starters per formation slot. Visual field diagram shows player positions. |
+|---|---|
+| **Playbooks** | Custom offensive and defensive playbooks are cloned from built-in templates and mapped to 13 down-and-distance buckets. |
+| **Gameplans** | Offensive and defensive gameplans change tempo, pressure, coverage, and other strategy knobs. |
+| **Playbook Fit** | Scheme fit scores how well your roster supports your play calls and turns that into a real selection and success edge. |
 
 ## Game Simulation
 
 | Feature | Details |
-|---------|---------|
-| **5-Phase Pass Engine** | Protection &rarr; Separation &rarr; Decision &rarr; Throw &rarr; Catch. Every rating matters: OL blocking vs. DL rush, WR route running vs. CB coverage, QB accuracy vs. coverage window. |
-| **5-Phase Run Engine** | Blocking &rarr; Vision &rarr; Engagement &rarr; Contact (Power OR Elusiveness, not blended) &rarr; Breakaway (Speed triggers in open field only). |
-| **Penalties** | Holding, pass interference, false start, offsides, and more. AI accept/decline logic. |
-| **Clock Management** | 15-minute quarters, two-minute drill, timeout management, running vs. stopped clock. |
-| **Overtime** | NFL modified sudden-death rules. |
-| **Special Teams** | Kick/punt return TDs, blocked kicks, safeties, field goals with distance-based accuracy. |
+|---|---|
+| **Pass Engine** | 6 phases: Protection, Separation, Decision, Throw, Catch, and YAC. |
+| **Run Engine** | 5 phases: Blocking, Vision, Engagement, Contact, and Breakaway. |
+| **Penalties** | Holding, pass interference, false start, offsides, and more. |
+| **Clock Management** | 15-minute quarters, two-minute drill logic, and timeout management. |
+| **Overtime** | NFL-style sudden-death rules. |
+| **Special Teams** | Kick/punt return TDs, blocked kicks, safeties, and distance-based field goal logic. |
 
 ## 2D Match Visualization
 
 | Feature | Details |
-|---------|---------|
-| **All 22 Players** | Labeled circles with jersey numbers and team colors on a full-field top-down view. |
-| **Route Running** | 9 receiver route shapes: go, slant, curl, out, in, post, corner, flat, seam. |
-| **Coverage Patterns** | DL rush lanes, LB zone/blitz, CB man coverage, safety zone drops. |
-| **Ball Tracking** | Pass arcs from QB to receiver, handoff paths on runs, kick arcs. |
-| **Visual Effects** | Coverage window glow, QB pressure indicator, TD/INT/sack flashes, breakaway speed trails. |
-| **Commentary Sync** | 400+ phrase fragments sync sentence-by-sentence to animation phases. 3 styles: neutral, hype, analytical. |
+|---|---|
+| **All 22 Players** | Labeled circles with jersey numbers and team colors on a top-down field view. |
+| **Route Running** | Receiver routes include go, slant, curl, out, in, post, corner, flat, and seam. |
+| **Coverage Patterns** | DL rush lanes, LB zone/blitz, CB man coverage, and safety drops. |
+| **Ball Tracking** | Pass arcs, handoff paths, and kick arcs show the ball movement clearly. |
+| **Visual Effects** | Coverage glow, QB pressure, TD/INT/sack flashes, and breakaway trails. |
+| **Commentary Sync** | Phrase fragments sync sentence-by-sentence to the animation phases. |
 | **Speed Control** | 1x / 2x / 4x playback. |
 
 ## Scouting & Draft
 
 | Feature | Details |
-|---------|---------|
-| **4-Stage Scouting Pipeline** | School Scouting &rarr; Position Scouting &rarr; Targeted Scouting &rarr; Interviews. Each stage has deadlines and accumulates confidence 0-100%. |
-| **18-Week College Season** | 50 schools across 5 conferences. Pre-rolled season with standings, stat leaders, weekly headlines, and Top 25 rankings. |
-| **Confidence System** | Higher confidence = tighter OVR range, more strengths/weaknesses revealed, better potential tier accuracy. Diminishing returns prevent over-scouting. |
-| **Interviews** | Pick 10 prospects to interview during playoffs. Only way to reveal development trait and character flags. |
-| **Draft Board** | Rank prospects, browse by position, view team needs. Confidence % and OVR range replace old scout levels. |
-| **Draft Room** | Multi-round draft with pick-by-pick resolution. Sim remaining picks, advance to your pick, or auto-draft. |
+|---|---|
+| **4-Stage Scouting Pipeline** | School Scouting, Position Scouting, Targeted Scouting, and Interviews. |
+| **18-Week College Season** | 50 schools across 5 conferences. Prospects, standings, headlines, and rankings evolve as your league does. |
+| **Player Scouting** | Scout roster players and free agents to raise scouting level and shrink rating noise. |
+| **Confidence System** | Higher confidence means a tighter OVR range and more accurate prospect information. |
+| **Draft Board** | Rank prospects, browse by position, and compare team needs before the draft starts. |
+| **Draft Room** | Multi-round draft with pick-by-pick resolution, skip-ahead flow, and full auto-sim. |
 
 ## Season & History
 
 | Feature | Details |
-|---------|---------|
-| **Full Season Lifecycle** | Regular season (18 weeks) &rarr; Playoffs &rarr; Offseason &rarr; Draft &rarr; repeat. |
-| **Progression/Regression** | Players improve or decline based on age, development trait, and performance. |
-| **Hall of Fame** | Era-relative legacy scoring. 175-point threshold, 3-season waiting period, max 7 inductees per year. |
-| **Ring of Honor** | Per-franchise honors. 85-point threshold with 4-season minimum tenure. Jersey retirement at 130 points. |
-| **GM Career** | Track your wins, championships, draft hits, and career arc across seasons. |
-| **13-Tab Almanac** | Awards, All-Pro, Hall of Fame, Ring of Honor, Records, Top 10 All-Time, Season Leaders, Season Recaps, History, Past Champions, All-Time Standings, Past Drafts, GM Career. |
+|---|---|
+| **Full Season Lifecycle** | Regular season, playoffs, offseason week windows, draft, and preseason all feed into each other. |
+| **Progression/Regression** | Players improve or decline based on age, development, and performance. |
+| **Hall of Fame** | Era-relative legacy scoring with a 175-point threshold, 3-season wait, and max 7 inductees per year. |
+| **Ring of Honor** | Per-franchise honors with an 85-point threshold and 130-point jersey retirement tier. |
+| **GM Career** | Track your own wins, championships, draft hits, and long-term legacy. |
+| **Almanac** | Hall of Fame, Ring of Honor, Records, Season Recaps, Head to Head, Replays, and GM Career. |
 
 ## Narrative & Immersion
 
 | Feature | Details |
-|---------|---------|
-| **Record Chasing** | Pace alerts at week 8, near-record alerts at week 14, record-broken events when all-time marks fall. Career record chase detection for veterans. |
-| **Rivalry System** | Division rivals always have a base rivalry. Heat accumulates from close games, upsets, division games, and playoff meetings. Decays 30% per offseason. Pre/post-game rivalry news. |
-| **Story Arcs** | Undefeated Watch (5-0 start, escalates through the season), Dynasty Run (consecutive championships), Breakout Player (50%+ production jump), Revenge Game (playoff rematch previews). |
-| **Milestones** | Single-game (300/400/500 passing yards, 100/200 rushing, etc.) and career tier milestones (10K/20K/30K passing yards, 100/200/300 TDs, etc.). |
-| **Prose Engine** | Data-driven sports writing with categorized vocabulary banks, context tagging, and variety tracking. Professional-quality game recaps, trade reports, and milestone announcements. |
-| **The Brandon Sams Show** | AI-generated sports radio with 5 distinct voice characters (host, analyst, 3 callers). Auto-triggers at key season moments. Full audio with transcript. |
+|---|---|
+| **Record Chasing** | Pace alerts, near-record alerts, and record-broken events. |
+| **Rivalry System** | Heat builds from close games, upsets, division games, and playoff meetings, then decays over the offseason. |
+| **Story Arcs** | Undefeated Watch, Dynasty Run, Breakout Player, and Revenge Game. |
+| **Milestones** | Single-game explosions and career tier milestones across major stats. |
+| **Prose Engine** | Data-driven sports writing for recaps, trades, milestones, and headlines. |
+| **The Brandon Sams Show** | AI-generated sports radio with five voice characters and an auto-scrolling transcript. |
 
-## ELO & Power Rankings
+## Rankings & Power
 
 | Feature | Details |
-|---------|---------|
-| **ELO Ratings** | Margin-of-victory adjusted, home advantage, persists across seasons. Visible on the Rankings page. |
-| **Power Rankings** | Weighted formula: 30% Win Score, 20% Point Diff, 15% SOS, 15% Recent Form, 10% Efficiency, 5% Quality Wins, 5% Injury Adjustment. Tiered display: Elite / Contender / Fringe / Rebuilding. |
+|---|---|
+| **ELO Ratings** | Margin-of-victory adjusted, home-advantage-aware, and persistent across seasons. |
+| **Power Rankings** | Weighted formula with tiered display: Elite, Contender, Fringe, Rebuilding. |
 
 ## Multiplayer
 
 | Feature | Details |
-|---------|---------|
-| **Multi-User Leagues** | Create or join leagues. Each user claims a team. JWT auth. |
-| **Per-Game Ready-Up** | Both teams must ready up before a game goes live. CPU opponents auto-ready. |
-| **Live Spectating** | Watch games in progress via SSE streaming. |
-| **Commissioner Tools** | League management for the league creator. |
+|---|---|
+| **Multi-User Leagues** | Create or join leagues and claim a team. |
+| **Per-Game Ready-Up** | Human teams may need to ready up before a game goes live. |
+| **Live Spectating** | Watch games in progress through the live streaming layer. |
+| **Commissioner Tools** | League management, readiness checks, and advance controls. |
 
 ## Visual Identity
 
 | Feature | Details |
-|---------|---------|
-| **Primetime Design System** | Monochrome base with 6 accent tokens (neon, cyan, steel, gold, earth, football). Glass panels with backdrop blur. Card depth system with layered shadows. |
-| **SVG Player Portraits** | Procedurally generated 11-layer faces. Seeded RNG ensures the same player always looks the same. |
-| **32 Team Logos** | Custom 256x256 PNGs for every franchise. |
-| **Typography** | Outfit headlines, DM Sans body, JetBrains Mono stats. |
-| **Animations** | Staggered page entrance choreography, stat counter animations, hover reveals, streak pulses. |
+|---|---|
+| **Primetime Design System** | Monochrome base with six accent tokens, glass surfaces, and a premium dark presentation. |
+| **SVG Player Portraits** | Procedurally generated seeded portraits for players, prospects, and legends. |
+| **32 Team Logos** | Custom logo assets for every franchise. |
+| **Typography** | Display, body, label, and mono type styles tuned for dense sports UI. |
+| **Animations** | Staggered page entrance, stat motion, hover reveals, and streak pulses. |

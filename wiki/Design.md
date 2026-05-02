@@ -23,8 +23,9 @@ Football Sim uses the **Primetime** design system — a premium dark-mode visual
 
 | Role | Font | Usage |
 |------|------|-------|
-| **Headlines** | Outfit | Section titles, nav buttons, hero stats |
-| **Body/Labels** | DM Sans | Body text, table cells, form labels |
+| **Headlines** | Space Grotesk | Section titles, nav buttons, hero stats |
+| **Body** | Manrope | Body text and table cells |
+| **Labels** | Inter | Form labels and microcopy |
 | **Stats** | JetBrains Mono | Numeric data, OVR ratings, salary figures, countdown timers |
 
 ## Glass Panels
@@ -75,7 +76,7 @@ Every player, prospect, and Hall of Famer has a unique procedurally generated SV
 | **Scouting** | College, Prospects, Scouting HQ, Draft Board |
 | **Game Day** | Full-screen match visualization |
 | **League** | Standings, Rankings, Stats, News, Playoffs, Awards, Commissioner |
-| **Almanac** | 13 historical reference tabs |
+| **Almanac** | Hall of Fame, Ring of Honor, Records, Season Recaps, Head to Head, Replays, GM Career |
 | **Draft** | Draft room (conditional — only during draft phase) |
 
 The Team section uses a visual separator (`|`) in its sub-nav to distinguish on-field tabs (Overview through Playbooks) from front-office tabs (Trades, Free Agents).

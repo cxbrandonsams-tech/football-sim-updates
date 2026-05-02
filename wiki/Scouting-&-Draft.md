@@ -1,72 +1,84 @@
 # Scouting & Draft
 
-Football Sim features a confidence-based scouting system with a pre-rolled 18-week college football season. You're not just clicking a "scout" button — you're making strategic decisions about where to invest your attention, and the intel drips in over time.
+Scouting is a confidence game. The point is not to reveal everything immediately. The point is to narrow the gap between what you think you know and what the player actually is.
 
 ---
 
 ## The College Season
 
-When a new draft class is created, the game pre-rolls an entire 18-week college football season:
+When a draft class is generated, the game pre-rolls a full college season:
 
-- **50 schools** across **5 conferences**
-- ~300 prospects distributed by school quality (top programs get more/better players)
-- Standings, stat leaders, weekly headlines, and Top 25 rankings
-- One college week is revealed per NFL week, so you're watching the college season unfold alongside your own
+- 50 schools across 5 conferences
+- About 300 prospects per class
+- Standings, weekly headlines, and ranking movement
+- One college week reveals alongside each NFL week
 
 ## 4-Stage Scouting Pipeline
 
-Each stage has a deadline. Miss it, and defaults are applied automatically (AI teams always make their picks on time).
+Each stage has a deadline. If you miss it, the game fills in the defaults.
 
 ### Stage 1: School Scouting
-**When:** Offseason through Week 1
-**What you do:** Choose between "Powerhouse" schools (proven programs) or "Dark Horse" schools (hidden gems)
-**Intel delivery:** Drips from Week 1 through Week 10
+**When:** Offseason through Week 1  
+**What it does:** Sets the first layer of school-level confidence  
+**What you learn:** Which programs look like powerhouses and which look like hidden value
 
 ### Stage 2: Position Scouting
-**When:** Weeks 1-10, locked at Week 11
-**What you do:** Allocate percentages across 10 positions (QB, RB, WR, TE, OL, DL, LB, DB, K, P). Preset templates available.
-**Intel delivery:** Drips from Week 11 through Week 18
+**When:** Weeks 1-10, locked at Week 11  
+**What it does:** Focuses your scouting budget across position groups  
+**What you learn:** Broad positional confidence and who deserves more attention
 
 ### Stage 3: Targeted Scouting
-**When:** Weeks 11-18, locked at Wild Card
-**What you do:** Pick up to 5 specific schools to deep-scout
-**Intel delivery:** Drips from Wild Card through Conference Championship
+**When:** Weeks 11-18, locked at Wild Card  
+**What it does:** Lets you deep-scout specific schools  
+**What you learn:** More precise prospect information for your short list
 
 ### Stage 4: Interviews
-**When:** Playoffs through Offseason Week 1
-**What you do:** Select up to 10 individual prospects for interviews
-**Intel delivery:** Immediate. This is the **only** way to reveal a prospect's development trait and character flags.
+**When:** Playoffs through Offseason Week 1  
+**What it does:** Locks in your final prospect interviews  
+**What you learn:** Development trait and character flags
+
+## Player Scouting
+
+The game also lets you scout individual players outside the draft flow.
+
+- Scouting uses a `0-100` level.
+- Each scout action adds 20 scouting points.
+- Scouting budget is limited each season.
+- Fully scouted players cannot be scouted again.
+
+The lower the scouting level, the wider the rating noise. At 0 scouting the guess is noisy; at 100 it is nearly exact.
 
 ## Confidence System
 
-Every prospect has a confidence score from 0-100% per team. Higher confidence means:
+Draft confidence keeps tightening as the scouting level rises:
 
-| Confidence | OVR Range | Strengths/Weaknesses | Potential Tier |
-|-----------|-----------|---------------------|---------------|
-| 0% | 54-point spread | 1 strength, 0 weaknesses | Inaccurate |
-| 50% | ~27-point spread | 2-3 strengths, 1-2 weaknesses | Close |
-| 100% | 2-point spread | 4 strengths, 3 weaknesses | Accurate |
+| Confidence | OVR Range | What It Feels Like |
+|---|---|---|
+| Low | Very wide | You are guessing more than knowing |
+| Mid | Narrowing | The player is starting to look real |
+| High | Tight | You can trust the board |
+| Full | Near exact | The draft gamble is mostly gone |
 
-**Diminishing returns** prevent over-investing: `effectiveGain = rawGain * (1 - current * 0.3)`. Early scouting is cheap; squeezing out the last 10% is expensive.
+Diminishing returns keep the last few percentage points expensive, so you have to choose where to spend your attention.
 
 ## Draft Board
 
-Before the draft, you rank prospects on your personal draft board:
-- Browse by position with filter chips
-- Sort by confidence, projected OVR range, or position
-- View team needs alongside prospect ratings
-- Confidence % and OVR range midpoint replace traditional scout grades
+Before the draft, you rank prospects on your own board:
+
+- Filter by position
+- Sort by confidence or projected range
+- Compare against team needs
+- Use the board to decide who is worth the risk
 
 ## Draft Room
 
-The draft itself is a multi-round event:
-- Pick-by-pick resolution with the current pick highlighted
-- **Make your pick** when it's your turn
-- **Sim one pick** to advance past the next CPU selection
-- **Advance to my pick** to skip ahead automatically
-- **Sim entire draft** to auto-complete
-- Drafted players immediately join your roster
+The draft itself is pick-by-pick:
 
-## After the Draft
+- Make your pick on your turn
+- Advance one CPU pick at a time if you want to watch the board move
+- Skip directly to your next pick if you want speed
+- Sim the whole draft when you are done thinking
 
-All prospects convert to full Player objects with their true ratings revealed. The gap between what you scouted and reality is where the drama lives — a high-confidence pick should be close to what you expected, but a low-confidence gamble could be a steal or a bust.
+## After The Draft
+
+Drafted players join your roster with their true ratings revealed. That is where scouting pays off: the more confidence you had, the less surprise you take on.

@@ -13,7 +13,7 @@ Merged Team and GM into a single section with dual-lens roster (Performance/Cont
 Raised thresholds, added waiting periods, capped yearly inductees, required minimum tenure for ROH.
 
 ### Primetime Design System (2026-04-12) — SHIPPED
-Monochrome + 6-accent color system (neon, cyan, steel, gold, earth, football). Outfit/DM Sans typography. Glass panels with card depth. Page entrance choreography.
+Monochrome + 6-accent color system (neon, cyan, steel, gold, earth, football). Space Grotesk/Manrope/Inter typography. Glass panels with card depth. Page entrance choreography.
 
 ### Prose Engine + Radio Show (2026-04-12) — SHIPPED
 Data-driven prose engine replacing templates. "The Brandon Sams Show" AI-generated sports radio with OpenAI TTS, caller personas, and auto-scrolling transcript UI.
